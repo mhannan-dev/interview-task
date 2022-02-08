@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-
 use App\Models\Customer;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
@@ -15,9 +16,13 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function customers()
     {
-        //
+        Session::put('page', 'customers');
+        $data['title'] = "Customer";
+        $data['customers'] = Customer::get();
+        //dd($data['customers']);
+        return view('admin.pages.customer.customers',$data);
     }
 
     /**

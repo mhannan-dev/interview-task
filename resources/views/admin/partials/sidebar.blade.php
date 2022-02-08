@@ -12,7 +12,7 @@
             <div class="info">
                 <a href="{{ url('admin/profile-update') }}" class="d-block">
                     <i class="fas fa-user fa-2x text-warning"></i> &nbsp;
-                    {{ Auth::guard('admin')->user()->name }}</a>
+                    {{ Auth::guard('admin')->user()->name }}/{{ Auth::guard('admin')->user()->type }}</a>
             </div>
         </div>
         <!-- SidebarSearch Form -->
@@ -30,11 +30,6 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 {{-- Settings --}}
-                @if (Session::get('page') == 'banners')
-                    <?php $active = 'active'; ?>
-                @else
-                    <?php $active = ''; ?>
-                @endif
                 <li class="nav-item menu-is-opening menu-open">
                     <ul class="nav nav-treeview" style="display: block;">
                         @if (Session::get('page') == 'customers')
@@ -43,7 +38,7 @@
                             <?php $active = ''; ?>
                         @endif
                         <li class="nav-item">
-                            <a href="" class="nav-link {{ $active }}">
+                            <a href="{{ route('customers') }}" class="nav-link {{ $active }}">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Customers</p>
                             </a>
@@ -54,9 +49,8 @@
                         @else
                             <?php $active = ''; ?>
                         @endif
-
                         <li class="nav-item">
-                            <a href="" class="nav-link {{ $active }}">
+                            <a href="{{ route('employees') }}" class="nav-link {{ $active }}">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Employees</p>
                             </a>

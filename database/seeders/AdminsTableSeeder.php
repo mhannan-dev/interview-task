@@ -18,14 +18,16 @@ class AdminsTableSeeder extends Seeder
         $adminsRecord = [
             [
                 'name' => 'M Hannan',
-                'type' => 'admin',
-                'email_phone' => 'admin@admin.com',
+                'type' => 'ADMIN',
+                'email' => 'admin@admin.com',
+                'phone' => '01521141412',
                 'password' => Hash::make('12345678')
             ],
             [
                 'name' => 'Employee One',
-                'type' => 'employee',
-                'email_mobile' => 'employee@email.com',
+                'type' => 'EMP',
+                'mobile' => 'employee@email.com',
+                'phone' => '01231112211',
                 'password' => Hash::make('12345678')
             ]
 

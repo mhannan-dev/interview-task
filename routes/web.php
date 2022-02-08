@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +35,11 @@ Route::get('/', function () {
 Route::prefix('admin')->namespace('Admin')->group(function () {
 	Route::match(['get', 'post'], '/', [AdminController::class, 'login']);
 	Route::group(['middleware' => ['admin']], function () {
-		Route::get('dashboard', [AdminController::class, 'dashboard']);
-		Route::get('settings', [AdminController::class, 'settings']);
-		Route::post('check-current-pwd', [AdminController::class, 'check_current_pwd']);
-		Route::post('update-current-pwd', [AdminController::class, 'update_current_pwd']);
-		Route::match(['get', 'post'], '/profile-update', [AdminController::class, 'profile_update']);
-		Route::get('other-setting', [AdminController::class, 'otherSetting']);
-		Route::match(['get', 'post'], '/add-edit-other-setting/{id?}', [AdminController::class, 'addEditOtherSetting']);
+		Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 		Route::get('logout',  [AdminController::class, 'logout']);
+        Route::match(['get', 'post'], 'add-edit-employee/{id?}', [EmployeeController::class, 'addEditEmployee'])->name('addEditEmployee');
+        Route::get('all-employee',  [EmployeeController::class, 'employees'])->name('employees');
+        Route::get('all-customer',  [CustomerController::class, 'customers'])->name('customers');
 	});
 });
+
