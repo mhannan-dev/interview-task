@@ -40,6 +40,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::match(['get', 'post'], 'add-edit-employee/{id?}', [EmployeeController::class, 'addEditEmployee'])->name('addEditEmployee');
         Route::get('all-employee',  [EmployeeController::class, 'employees'])->name('employees');
         Route::get('all-customer',  [CustomerController::class, 'customers'])->name('customers');
+        Route::match(['get', 'post'], 'check-customer-email', [CustomerController::class, 'checkEmail']);
+        Route::get('search',  [CustomerController::class, 'liveSearch'])->name('live_search');
+        Route::match(['get', 'post'], 'add-edit-customer/{id?}', [CustomerController::class, 'addEditCustomer'])->name('addEditCustomer');
+        Route::post('csv-import', [CustomerController::class, 'uploadContent'])->name('csvUpload');
+
 	});
 });
 

@@ -21,24 +21,24 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                @include('admin.partials.message')
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form action="{{ url('admin/add-edit-employee', $employee->id) }}" method="POST">
+                                <form id="quickForm" action="{{ url('admin/add-edit-customer', $customer->id) }}" method="POST">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
-                                            <label for="brand">Employee name</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($employee['name']))
-                                            value="{{ $employee['name'] }}"
+                                            <label for="brand">Customer name</label><span class="text-danger">*</span>
+                                            <input type="text" @if (!empty($customer['name']))
+                                            value="{{ $customer['name'] }}"
                                         @else
                                             value="{{ old('name') }}"
                                             @endif name="name"
                                             class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                            id="name" placeholder="Employee name">
+                                            id="name" placeholder="Customer name">
                                             @if ($errors->has('name'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('name') }}</strong>
@@ -47,13 +47,13 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="Phone">Phone</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($employee['phone']))
-                                            value="{{ $employee['phone'] }}"
+                                            <input type="text" @if (!empty($customer['phone']))
+                                            value="{{ $customer['phone'] }}"
                                         @else
                                             value="{{ old('phone') }}"
                                             @endif name="phone"
                                             class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                            id="name" placeholder="Employee name">
+                                            id="name" placeholder="Customer phone">
                                             @if ($errors->has('phone'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -62,13 +62,13 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="email">Email</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($employee['email']))
-                                            value="{{ $employee['email'] }}"
+                                            <input type="text" @if (!empty($customer['email']))
+                                            value="{{ $customer['email'] }}"
                                         @else
                                             value="{{ old('email') }}"
                                             @endif name="email"
                                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                            id="email" placeholder="Employee email">
+                                            id="email" placeholder="customer email">
                                             @if ($errors->has('email'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -77,13 +77,13 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="password">Password</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($employee['password']))
-                                            value="{{ $employee['password'] }}"
+                                            <input type="text" @if (!empty($customer['password']))
+                                            value="{{ $customer['password'] }}"
                                         @else
                                             value="{{ old('password') }}"
                                             @endif name="password"
                                             class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                                            id="password" placeholder="Employee password">
+                                            id="password" placeholder="customer password">
                                             @if ($errors->has('password'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('password') }}</strong>
@@ -106,4 +106,70 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function() {
+            console.log('jquery ready');
+            $('#quickForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        name: true,
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 11,
+                        maxlength: 11,
+                        digits: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote:"admin/check-email"
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Please enter full name",
+                        name: "Please enter full name"
+                    },
+                    email: {
+                        required: "Please enter a email address",
+                        email: "Please enter a email address",
+                        remote:"Email is already exist use email or login"
+                    },
+                    mobile: {
+                        required: "Please enter a mobile no",
+                        mobile: "Please enter a mobile no",
+                        minlength: "Your mobile must consist of 10 digits",
+                        maxlength: "Your mobile max consist of 10 digits",
+                        digits: "Please enter your valid mobile",
+                        //remote: "This is mobile no is already exist"
+
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 8 characters long"
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
 @endsection

@@ -1,13 +1,9 @@
 @extends('admin.layouts.master')
 @section('title')
-    Product Category
+    All Employee
 @endsection
 @section('styles')
     <style>
-        a {
-            color: #5da1eb;
-        }
-
     </style>
 @endsection
 @section('content')
