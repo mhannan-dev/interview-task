@@ -28,10 +28,10 @@ class AuthController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('LaravelPassportClient')->accessToken;
-                $customerName = $user->name;
+                $customerName = $user->id;
                 DB::table('customers')->where('email', $request->email)->update(['auth_token' => $token]);
                 return response()->json(
-                    ['message' => 'You are logged in', 'token' => $token,'name'=> $customerName],
+                    ['message' => 'You are logged in', 'token' => $token, 'id'=> $customerName],
                     200
                 );
             } else {
@@ -49,7 +49,7 @@ class AuthController extends Controller
         $customer = Customer::find($id);
         if ($customer->auth_token) {
             return response()->json(
-                ['message' => 'Welcome............', 'name'=> $customer->name],
+                ['message' => 'Welcome to Customer API login', 'id'=> $customer->id],
                 200
             );
         } else {
