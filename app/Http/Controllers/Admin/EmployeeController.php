@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
+use Database\Seeders\EmployeeSeeder;
 
 class EmployeeController extends Controller
 {
@@ -74,4 +75,29 @@ class EmployeeController extends Controller
 		}
 		return view('admin.pages.emp.addEditEmp', compact('title','employee','buttonText'));
 	}
+
+    //Check customer email
+    public function checkEmpPhone(Request $request)
+    {
+        $data = $request->all();
+        $phoneCount = Admin::where('phone', $data['phone'])->count();
+        //dd($emailCount);
+        if ($phoneCount > 0) {
+            return "false";
+        } else {
+            return "true";
+        }
+    }
+    //Check customer email
+    public function checkEmpEmail(Request $request)
+    {
+        $data = $request->all();
+        $emailCount = Admin::where('email', $data['email'])->count();
+        //dd($emailCount);
+        if ($emailCount > 0) {
+            return "false";
+        } else {
+            return "true";
+        }
+    }
 }

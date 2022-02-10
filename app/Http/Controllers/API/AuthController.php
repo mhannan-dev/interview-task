@@ -49,7 +49,7 @@ class AuthController extends Controller
         $customer = Customer::find($id);
         if ($customer->auth_token) {
             return response()->json(
-                ['message' => 'Welcome to details API', 'name'=> $customer->name],
+                ['message' => 'Welcome............', 'name'=> $customer->name],
                 200
             );
         } else {

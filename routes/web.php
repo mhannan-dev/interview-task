@@ -26,8 +26,6 @@ Route::get('cc', function () {
     Artisan::call('optimize:clear');
     return "Cleared!";
 });
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,8 +37,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 		Route::get('logout',  [AdminController::class, 'logout']);
         Route::match(['get', 'post'], 'add-edit-employee/{id?}', [EmployeeController::class, 'addEditEmployee'])->name('addEditEmployee');
         Route::get('all-employee',  [EmployeeController::class, 'employees'])->name('employees');
+        Route::match(['get', 'post'], 'check-emp-email', [EmployeeController::class, 'checkEmpEmail']);
+        Route::match(['get', 'post'], 'check-emp-phone', [EmployeeController::class, 'checkEmpPhone']);
         Route::get('all-customer',  [CustomerController::class, 'customers'])->name('customers');
         Route::match(['get', 'post'], 'check-customer-email', [CustomerController::class, 'checkEmail']);
+        Route::match(['get', 'post'], 'check-phone', [CustomerController::class, 'checkPhone']);
         Route::get('search',  [CustomerController::class, 'liveSearch'])->name('live_search');
         Route::match(['get', 'post'], 'add-edit-customer/{id?}', [CustomerController::class, 'addEditCustomer'])->name('addEditCustomer');
         Route::post('csv-import', [CustomerController::class, 'uploadContent'])->name('csvUpload');

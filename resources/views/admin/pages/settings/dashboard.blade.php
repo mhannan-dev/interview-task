@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    eCommerce Admin - Dashboard
+    Admin - Dashboard
 @endsection
 @section('styles')
     <style>

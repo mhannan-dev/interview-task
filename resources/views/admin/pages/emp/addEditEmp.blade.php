@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@section('title')
+    Employee Form
+@endsection
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -27,7 +30,7 @@
 
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form action="{{ url('admin/add-edit-employee', $employee->id) }}" method="POST">
+                                <form id="employeeForm" action="{{ url('admin/add-edit-employee', $employee->id) }}" method="POST">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
@@ -106,4 +109,69 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(function() {
+            $('#employeeForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        name: true,
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 11,
+                        maxlength: 11,
+                        digits: true,
+                        remote: "check-emp-phone"
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: "check-emp-email"
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Please enter full name",
+                        name: "Please enter full name"
+                    },
+                    email: {
+                        required: "Please enter a email address",
+                        email: "Please enter a email address",
+                        remote: "Email is already exist use another"
+                    },
+                    phone: {
+                        required: "Please enter a mobile no",
+                        mobile: "Please enter a mobile no",
+                        minlength: "Your mobile must consist of 10 digits",
+                        maxlength: "Your mobile max consist of 10 digits",
+                        digits: "Please enter your valid mobile",
+                        remote: "This is phone no is already exist"
+
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 8 characters long"
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
 @endsection

@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Catalogue <a href="{{ url('admin/add-edit-employee/') }}" class="btn btn-success">Add New
+                        <h1>Application <a href="{{ url('admin/add-edit-employee/') }}" class="btn btn-success">Add New
                             Employee</a> </h1>
 
                     </div>
@@ -36,19 +36,6 @@
                             <div class="card-header">
                                 <h3 class="card-title">Employees</h3>
 
-                                <div class="card-tools">
-
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right"
-                                            placeholder="Search">
-
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -58,6 +45,7 @@
                                             <th>Sl</th>
                                             <th>Name</th>
                                             <th>Phone</th>
+                                            <th>Email</th>
                                             <th>Crated At</th>
                                         </tr>
                                     </thead>
@@ -68,6 +56,7 @@
                                                     <td>{{ ++$key }}</td>
                                                     <td>{{ $emp->name }}</td>
                                                     <td>{{ $emp->phone }}</td>
+                                                    <td>{{ $emp->email }}</td>
                                                     <td>{{ date('Y-m-d', strtotime($emp->created_at)) }}</td>
 
                                                 </tr>

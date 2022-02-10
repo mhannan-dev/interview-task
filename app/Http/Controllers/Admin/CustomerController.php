@@ -133,7 +133,7 @@ class CustomerController extends Controller
                         'name' => $importData[1],
                         'phone' => $importData[2],
                         'email' => $importData[3],
-                        'password' => $importData[4],
+                        'password' => Hash::make($importData[4]),
                         'admin_id'    =>  Auth::guard('admin')->user()->id
                     ]);
                     DB::commit();
@@ -186,6 +186,18 @@ class CustomerController extends Controller
         $emailCount = Customer::where('email', $data['email'])->count();
         //dd($emailCount);
         if ($emailCount > 0) {
+            return "false";
+        } else {
+            return "true";
+        }
+    }
+    //Check customer email
+    public function checkPhone(Request $request)
+    {
+        $data = $request->all();
+        $phoneCount = Customer::where('phone', $data['phone'])->count();
+        //dd($emailCount);
+        if ($phoneCount > 0) {
             return "false";
         } else {
             return "true";

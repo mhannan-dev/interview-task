@@ -8,13 +8,14 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
+        @include('admin.partials.message')
         @if (Auth::guard('admin')->user()->type == 'ADMIN')
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Catalogue
+                            <h1>Application
                             </h1>
                         </div>
                         <div class="col-sm-6">
@@ -29,14 +30,12 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    @include('admin.partials.message')
 
                     <div class="row">
                         <nav class="navbar navbar-light bg-light">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search"
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search by name" name="search"
                                     id="search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </nav>
                         <div class="col-12">
@@ -53,6 +52,7 @@
                                                 <th>Sl</th>
                                                 <th>Name</th>
                                                 <th>Phone</th>
+                                                <th>Email</th>
                                                 <th>Crated At</th>
                                             </tr>
                                         </thead>
@@ -63,6 +63,7 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $emp->name }}</td>
                                                         <td>{{ $emp->phone }}</td>
+                                                        <td>{{ $emp->email }}</td>
                                                         <td>{{ date('Y-m-d', strtotime($emp->created_at)) }}</td>
                                                     </tr>
                                                 @endforeach
@@ -120,7 +121,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="csv">Select CSV</label>
-                            <input name="file" type="file">
+                            <input name="file" type="file" required>
                         </div>
                     </div>
                     <div class="modal-footer">

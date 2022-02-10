@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@section('title')
+    Customer Form
+@endsection
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -27,7 +30,8 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form id="quickForm" action="{{ url('admin/add-edit-customer', $customer->id) }}" method="POST">
+                                <form id="quickForm" action="{{ url('admin/add-edit-customer', $customer->id) }}"
+                                    method="POST">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
@@ -47,13 +51,9 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="Phone">Phone</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($customer['phone']))
-                                            value="{{ $customer['phone'] }}"
-                                        @else
-                                            value="{{ old('phone') }}"
-                                            @endif name="phone"
-                                            class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                            id="name" placeholder="Customer phone">
+                                            <input type="text" name="phone"
+                                                class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
+                                                id="phone" placeholder="Enter Valid phone" value="{{ old('phone') }}">
                                             @if ($errors->has('phone'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -62,13 +62,10 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="email">Email</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($customer['email']))
-                                            value="{{ $customer['email'] }}"
-                                        @else
-                                            value="{{ old('email') }}"
-                                            @endif name="email"
-                                            class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                            id="email" placeholder="customer email">
+
+                                            <input type="email" name="email"
+                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+                                                id="email" placeholder="Enter Valid Email" value="{{ old('email') }}">
                                             @if ($errors->has('email'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -111,7 +108,6 @@
 @section('scripts')
     <script>
         $(function() {
-            console.log('jquery ready');
             $('#quickForm').validate({
                 rules: {
                     name: {
@@ -123,11 +119,12 @@
                         minlength: 11,
                         maxlength: 11,
                         digits: true,
+                        remote: "check-phone"
                     },
                     email: {
                         required: true,
                         email: true,
-                        remote:"admin/check-email"
+                        remote: "check-customer-email"
                     },
                     password: {
                         required: true,
@@ -142,15 +139,15 @@
                     email: {
                         required: "Please enter a email address",
                         email: "Please enter a email address",
-                        remote:"Email is already exist use email or login"
+                        remote: "Email is already exist use another"
                     },
-                    mobile: {
+                    phone: {
                         required: "Please enter a mobile no",
                         mobile: "Please enter a mobile no",
                         minlength: "Your mobile must consist of 10 digits",
                         maxlength: "Your mobile max consist of 10 digits",
                         digits: "Please enter your valid mobile",
-                        //remote: "This is mobile no is already exist"
+                        remote: "This is phone no is already exist"
 
                     },
                     password: {

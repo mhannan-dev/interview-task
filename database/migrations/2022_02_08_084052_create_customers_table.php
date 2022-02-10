@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('admin_id')->nullable();
+            $table->text('auth_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

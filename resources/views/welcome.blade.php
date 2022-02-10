@@ -34,7 +34,7 @@
 					<div class="hero-inner">
 						<div class="hero-copy">
 							<h1 class="hero-title mt-0">Coding Test Application</h1>
-							<p class="hero-paragraph">This is an Laravel Based Appliction please login admin (create an employee after login then login as employee )for real life experience</p>
+							<p class="hero-paragraph">This is an Laravel Based Appliction please login as admin (create an employee after login then login as employee ) for real life experience</p>
 							<div class="hero-cta">
 								<a class="button button-primary button-wide-mobile" href="{{ url('admin') }}">Login</a>
 							</div>
