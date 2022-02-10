@@ -29,7 +29,11 @@ class CustomerController extends Controller
         //dd($data['customers']);
         return view('admin.pages.customer.customers', $data);
     }
-
+    /**
+     * Add Edit Customer Method
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function addEditCustomer(Request $request, $id = null)
     {
         if ($id == "") {
@@ -63,7 +67,6 @@ class CustomerController extends Controller
                     'phone.required' => 'The mobile no is required',
                     'email.required' => 'The email is required',
                     'password.required' => 'The password is required'
-
                 ];
                 $this->validate($request, $rules, $validationMessages);
                 $customer->name = $data['name'];
@@ -145,7 +148,7 @@ class CustomerController extends Controller
             throw new \Exception('No file was uploaded', Response::HTTP_BAD_REQUEST);
         }
     }
-
+    //Check Uploaded File Properties
     public function checkUploadedFileProperties($extension, $fileSize)
     {
         $valid_extension = array("csv"); //Only want csv and excel files
@@ -168,7 +171,7 @@ class CustomerController extends Controller
             if ($query != '') {
                 $customers = Customer::where('name', 'Like', '%' . $query . '%')->get();
                 foreach ($customers as $customer) {
-                    $output.='<tr><td>'. $customer->name.'</td><td>'.$customer->phone.'</td><td>'.$customer->email.'</td><td>'. date('Y-m-d', strtotime($customer->created_at)).'</td><td>'.'</td></tr>';
+                    $output .= '<tr><td>' . $customer->name . '</td><td>' . $customer->phone . '</td><td>' . $customer->email . '</td><td>' . date('Y-m-d', strtotime($customer->created_at)) . '</td><td>' . '</td></tr>';
                 }
                 return response($output);
             }
@@ -176,7 +179,7 @@ class CustomerController extends Controller
             echo 'else logic';
         }
     }
-
+    //Check customer email
     public function checkEmail(Request $request)
     {
         $data = $request->all();

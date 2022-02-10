@@ -12,7 +12,6 @@ class AdminController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function dashboard()
     {
@@ -20,7 +19,10 @@ class AdminController extends Controller
         $data['title'] = "Dashboard";
         return view('admin.pages.settings.dashboard', $data);
     }
-
+    /**
+     * Phone and email related credentials
+     *
+     */
     protected function credentials(Request $request)
     {
         if (is_numeric($request->get('email'))) {
@@ -35,60 +37,19 @@ class AdminController extends Controller
             ];
         }
     }
-    // protected function credentials(Request $request)
-    // {
-    //     if (is_numeric($request->get('email'))) {
-    //         return [
-    //             'phone' => $request->get('email'),
-    //             'password' => $request->get('password')
-    //         ];
-    //     } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
-    //         return [
-    //             'email' => $request->get('email'),
-    //             'password' => $request->get('password')
-    //         ];
-    //     }
-    //     return ['username' => $request->get('email'), 'password' => $request->get('password')];
-    // }
-
     /**
-     * Admin Form
-     *
+     * Show login form
      */
     public function showLoginForm()
     {
         return view('admin.pages.settings.admin_login');
     }
     /**
-     * Admin login
+     * Do Admin login
      *
      */
     public function login(Request $request)
     {
-        // if ($request->isMethod('POST')) {
-        //     $data = $request->all();
-        //     //Validation rules
-        //     $rules = [
-        //         'email_phone' => 'required',
-        //         'password' => 'required',
-        //     ];
-        //     //Validation message
-        //     $customMessage = [
-        //         'email_phone.required' => 'Email or phone is required',
-        //         'password.required' => 'Password is required',
-        //     ];
-        //     $this->validate($request, $rules, $customMessage);
-        //     if (Auth::guard('admin')->attempt(
-        //         [
-        //             'email_phone' => $data['email_phone'], 'password' => $data['password']
-        //         ]
-        //     )) {
-        //         return redirect('admin/dashboard')->with('success', 'Login Successfully!');
-        //     } else {
-        //         return back()->with('error', 'Username or password is wrong');
-        //     }
-        // }
-        // return view('admin.pages.settings.admin_login');
         if ($request->isMethod('POST')) {
             $data = $request->all();
             //Validation rules
@@ -114,13 +75,12 @@ class AdminController extends Controller
         return view('admin.pages.settings.admin_login');
     }
     /**
-     * Admin logout
+     * Complete Admin logout
      *
      */
     public function logout()
     {
         Auth::guard('admin')->logout();
-        //return view('admin.pages.settings.admin_login');
         return redirect('/');
     }
 }
