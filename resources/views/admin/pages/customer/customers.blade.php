@@ -8,15 +8,16 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
-        @include('admin.partials.message')
+        <div class="mx-auto" style="margin-left: 10px;">
+            @include('admin.partials.message')
+        </div>
         @if (Auth::guard('admin')->user()->type == 'ADMIN')
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Application
-                            </h1>
+                            <h1>Application</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -34,8 +35,8 @@
                     <div class="row">
                         <nav class="navbar navbar-light bg-light">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search by name, phone or email" name="search"
-                                    id="search">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search by name, phone or email"
+                                    name="search" id="search">
                             </form>
                         </nav>
                         <div class="col-12">
@@ -73,7 +74,6 @@
                                             @endif
                                         </tbody>
                                         <tbody id="data_records" class="ajaxData">
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -83,7 +83,6 @@
                         </div>
                     </div>
                     <!-- /.row -->
-
                 </div>
                 <!-- /.container-fluid -->
             </section>
@@ -157,63 +156,6 @@
                 }
             })
         });
-        $('#quickForm').validate({
-            rules: {
-                name: {
-                    required: true,
-                    name: true,
-                },
-                mobile: {
-                    required: true,
-                    minlength: 11,
-                    maxlength: 11,
-                    digits: true,
-                },
-                email: {
-                    required: true,
-                    email: true,
-                    remote: "check-email" // check-email is laravel  route
-                },
-                password: {
-                    required: true,
-                    minlength: 8
-                },
-            },
-            messages: {
-                name: {
-                    required: "Please enter full name",
-                    name: "Please enter full name"
-                },
-                email: {
-                    required: "Please enter a email address",
-                    email: "Please enter a email address",
-                    remote: "Email is already exist use email or login"
-                },
-                mobile: {
-                    required: "Please enter a mobile no",
-                    mobile: "Please enter a mobile no",
-                    minlength: "Your mobile must consist of 10 digits",
-                    maxlength: "Your mobile max consist of 10 digits",
-                    digits: "Please enter your valid mobile",
-                    //remote: "This is mobile no is already exist"
-
-                },
-                password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 8 characters long"
-                },
-            },
-            errorElement: 'span',
-            errorPlacement: function(error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function(element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-            }
-        });
+        
     </script>
 @endsection
