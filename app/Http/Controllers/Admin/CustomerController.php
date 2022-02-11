@@ -78,7 +78,8 @@ class CustomerController extends Controller
                 return redirect()->back()->with('success', $message);
             }
         } catch (\Throwable $th) {
-            throw $th;
+            //throw $th;
+            return redirect()->route('customers')->with('error', 'Failed');
         }
         return view('admin.pages.customer.addEditCustomer', compact('title', 'customer', 'buttonText'));
     }

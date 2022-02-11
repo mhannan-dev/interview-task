@@ -34,12 +34,11 @@
                     <div class="row">
                         <nav class="navbar navbar-light bg-light">
                             <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search by name" name="search"
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search by name, phone or email" name="search"
                                     id="search">
                             </form>
                         </nav>
                         <div class="col-12">
-
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Customers</h3>

@@ -56,7 +56,7 @@
                                             value="{{ old('phone') }}"
                                             @endif name="phone"
                                             class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                            id="name" placeholder="Employee name">
+                                            id="name" placeholder="Employee phone">
                                             @if ($errors->has('phone'))
                                                 <div class="invalid-feedback">
                                                     <strong>{{ $errors->first('phone') }}</strong>
@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="password">Password</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($employee['password']))
+                                            <input type="password" @if (!empty($employee['password']))
                                             value="{{ $employee['password'] }}"
                                         @else
                                             value="{{ old('password') }}"

@@ -29,7 +29,7 @@
                     @csrf
                     <div class="input-group mb-3">
                         {{-- <input name="email_phone" type="text" class="form-control" placeholder="email_phone"> --}}
-                        <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus>
+                        <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Enter email/phone" required  autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>

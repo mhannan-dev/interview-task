@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="password">Password</label><span class="text-danger">*</span>
-                                            <input type="text" @if (!empty($customer['password']))
+                                            <input type="password" @if (!empty($customer['password']))
                                             value="{{ $customer['password'] }}"
                                         @else
                                             value="{{ old('password') }}"
