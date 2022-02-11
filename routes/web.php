@@ -45,7 +45,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('search',  [CustomerController::class, 'liveSearch'])->name('live_search');
         Route::match(['get', 'post'], 'add-edit-customer/{id?}', [CustomerController::class, 'addEditCustomer'])->name('addEditCustomer');
         Route::post('csv-import', [CustomerController::class, 'uploadContent'])->name('csvUpload');
-
 	});
 });
 

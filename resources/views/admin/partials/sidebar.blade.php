@@ -10,7 +10,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">
+                <a href="{{ route('dashboard') }}" class="d-block">
                     <img src="{{ URL::asset('backend') }}/dist/img/man.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
                     {{ Auth::guard('admin')->user()->name }}/{{ Auth::guard('admin')->user()->type }}</a>
