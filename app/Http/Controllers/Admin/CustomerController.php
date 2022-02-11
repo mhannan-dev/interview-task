@@ -170,7 +170,10 @@ class CustomerController extends Controller
             $output = '';
             $query = $request->get('search');
             if ($query != '') {
-                $customers = Customer::where('name', 'Like', '%' . $query . '%')->get();
+                $customers = Customer::where('name', 'Like', '%' . $query . '%')
+                ->orWhere('phone', 'Like', '%' . $query . '%')
+                ->orWhere('email', 'Like', '%' . $query . '%')
+                ->get();
                 foreach ($customers as $customer) {
                     $output .= '<tr><td>' . $customer->name . '</td><td>' . $customer->phone . '</td><td>' . $customer->email . '</td><td>' . date('Y-m-d', strtotime($customer->created_at)) . '</td><td>' . '</td></tr>';
                 }
