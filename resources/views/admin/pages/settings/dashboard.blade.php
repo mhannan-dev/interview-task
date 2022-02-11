@@ -4,10 +4,6 @@
 @endsection
 @section('styles')
     <style>
-        a {
-            color: #5da1eb;
-        }
-
     </style>
 @endsection
 @section('content')
@@ -29,7 +25,7 @@
                 </div>
                 @include('admin.partials.message')
             </div><!-- /.container-fluid -->
-        </section>
+        </section
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
@@ -37,12 +33,10 @@
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box">
                             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
                             <div class="info-box-content">
-                                <span class="info-box-text">CPU Traffic</span>
+                                <span class="info-box-text">Employee</span>
                                 <span class="info-box-number">
-                                    10
-                                    <small>%</small>
+                                    {{ $employee }}
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -52,11 +46,10 @@
                     <!-- ./col -->
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
-                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Likes</span>
-                                <span class="info-box-number">41,410</span>
+                                <span class="info-box-text">Customer</span>
+                                <span class="info-box-number">{{ $customer }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -66,10 +59,9 @@
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
                             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
                             <div class="info-box-content">
-                                <span class="info-box-text">Sales</span>
-                                <span class="info-box-number">760</span>
+                                <span class="info-box-text">Admin</span>
+                                <span class="info-box-number">{{ $admin }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -78,10 +70,9 @@
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
                             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
                             <div class="info-box-content">
-                                <span class="info-box-text">New Members</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-text">Others</span>
+                                <span class="info-box-number">0</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -89,7 +80,6 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
             </div><!-- /.container-fluid -->
         </section>
     </div>

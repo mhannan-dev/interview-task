@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Admin;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Admin as ModelsAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -17,6 +20,10 @@ class AdminController extends Controller
     {
         Session::put('page', 'dashboard');
         $data['title'] = "Dashboard";
+        $data['employee'] = DB::table('admins')->where('type', '=', 'EMP')->count();
+        $data['customer'] = DB::table('customers')->count();
+        $data['admin'] = DB::table('admins')->where('type', '=', 'ADMIN')->count();
+        //dd($data['employee']);
         return view('admin.pages.settings.dashboard', $data);
     }
     /**
