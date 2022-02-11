@@ -18,13 +18,13 @@ class CustomerSeeder extends Seeder
             [
                 'name' => 'Abdus Salam',
                 'email' => 'asallam@email.com',
-                'phone' => '01231 XXXXXX',
+                'phone' => '01231151218',
                 'password' => Hash::make('12345678')
             ],
             [
                 'name' => 'Sumit Saha',
                 'email' => 'sumit@email.com',
-                'phone' => '01131 XXXXXX',
+                'phone' => '01131131619',
                 'password' => Hash::make('12345678')
             ]
         ];

@@ -20,7 +20,7 @@ class EmployeeSeeder extends Seeder
             [
                 'name' => 'Abdul Jabber',
                 'email' => 'asallam@email.com',
-                'phone' => '01531 XXXXXX',
+                'phone' => '01531261219',
                 'password' => Hash::make('12345678')
             ]
         ];

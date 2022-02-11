@@ -1,31 +1,72 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>404 Page Not Found</title>
-  </head>
-  <body>
-    <section style="padding-top: 100px">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <h1>404</h1>
-                    <h2>Page Not Found</h2>
-                    <p>We are sorrry, the page you requested could not be found. Please go back to home page</p>
-                    <a class="btn btn-outline-primary" href="">Visit Home Page</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Coding Test Application</title>
+	<link href="https://fonts.googleapis.com/css?family=Heebo:400,700|Oxygen:700" rel="stylesheet">
+	<link rel="stylesheet" href="{{ URL::asset('front') }}/dist/css/style.css">
+	<script src="https://unpkg.com/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+</head>
+<body class="is-boxed has-animations">
+	<div class="body-wrap boxed-container">
+		<header class="site-header text-light">
+			<div class="container">
+				<div class="site-header-inner">
+					<div class="brand header-brand">
+						<h1 class="m-0">
+							<a href="#">
+								<img class="header-logo-image" src="{{ URL::asset('front') }}/dist/images/logo.svg" alt="Logo">
+							</a>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="hero text-center text-light">
+				<div class="hero-bg"></div>
+				<div class="hero-particles-container">
+					<canvas id="hero-particles"></canvas>
+				</div>
+				<div class="container-sm">
+					<div class="hero-inner">
+						<div class="hero-copy">
+							<h1 class="hero-title mt-0">Coding Test Application</h1>
+							<p class="hero-paragraph">This is an Laravel Based Appliction please login as admin (create an employee after login then login as employee ) for real life experience</p>
+							<div class="hero-cta">
+								<a class="button button-primary button-wide-mobile" href="{{ url('admin') }}">Login</a>
+							</div>
+						</div>
+						<div class="mockup-container">
+							<div class="mockup-bg">
+								<img src="{{ URL::asset('front') }}/dist/images/iphone-hero-bg.svg" alt="iPhone illustration">
+							</div>
+							<img class="device-mockup" src="{{ URL::asset('front') }}/dist/images/iphone-hero.png" alt="iPhone Hero">
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="site-footer">
+			<div class="footer-particles-container">
+				<canvas id="footer-particles"></canvas>
+			</div>
+			<div class="site-footer-bottom">
+				<div class="container">
+					<div class="site-footer-inner">
+						<div class="brand footer-brand">
+							<a href="#">
+								<img src="{{ URL::asset('front') }}/dist/images/logo.svg" alt="Venus logo">
+							</a>
+						</div>
+						<div class="footer-copyright">&copy; 2018 Venus, all rights reserved</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="{{ URL::asset('front') }}/dist/js/main.min.js"></script>
+</body>
 </html>

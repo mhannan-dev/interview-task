@@ -18,17 +18,17 @@ use App\Http\Controllers\Admin\EmployeeController;
 */
 //To clear all cache
 Route::get('cc', function () {
-    // Artisan::call('cache:clear');
-    // Artisan::call('config:clear');
-    // Artisan::call('config:cache');
-    // Artisan::call('view:clear');
-    //Artisan::call('route:cache');
     Artisan::call('optimize:clear');
     return "Cleared!";
 });
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::fallback(function() {
+    return view('404');
+});
+
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
 	Route::match(['get', 'post'], '/', [AdminController::class, 'login']);
